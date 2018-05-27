@@ -1,10 +1,15 @@
 import Message from './Message';
-import Canvas from './Canvas';
+import Stage from './Stage';
+import Renderer from './Renderer';
 
 const message = new Message();
 message.show();
 
-const canvas = new Canvas();
-canvas.attach(document.body);
+const stage = new Stage();
+stage.attach(document.body);
+
+const renderer = new Renderer(stage.ctx, stage.canvas);
+renderer.draw();
+renderer.drawText('Alive', '#00ff00', 100, 300);
 
 
