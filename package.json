@@ -1,0 +1,26 @@
+{
+  "name": "dungeon-gate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "John Ovalle <johnovalle@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "build-dev": "webpack --config webpack.dev.js --watch",
+    "serve-dev": "nodemon server",
+    "postinstall": "yarn build && node server"
+  },
+  "engines": {
+    "node": "8.9.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "ts-loader": "^4.3.0",
+    "typescript": "^2.8.3",
+    "webpack": "^4.9.1",
+    "webpack-cli": "^2.1.4"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
