@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
-  entry: ['./src/app.ts'],
+  entry: ['./src/App.ts'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app.js',
