@@ -24,5 +24,4 @@ module.exports = {
   },
   devtool: 'source-map',
   target: 'web',
-  watch: true,
 }

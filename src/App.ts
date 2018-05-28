@@ -3,7 +3,6 @@ import Stage from './Stage';
 import Renderer from './Renderer';
 import store from './Store';
 
-import { CHANGE_SCENE } from './actions/actiontypes';
 import { changeScene } from './actions/sceneActions';
 
 const message = new Message();
@@ -13,8 +12,6 @@ const stage = new Stage();
 stage.attach(document.body);
 
 const renderer = new Renderer(stage.ctx, stage.canvas);
-// renderer.draw();
-// renderer.drawText('Alive', '#00ff00', 100, 300);
 
 store.dispatch(changeScene('booting'));
 store.subscribe(() => {
