@@ -13,6 +13,11 @@ declare global {
   interface Scene {
     background: string;
     messages: Message[];
+    keyMap: KeyMap;
+  }
+
+  interface KeyMap {
+    [name: string]: string;
   }
   
   interface Message {
@@ -22,5 +27,6 @@ declare global {
     y: number;
   }
 }
+
 
 export {}
