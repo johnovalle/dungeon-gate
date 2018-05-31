@@ -7,7 +7,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js --display-error-details",
     "build-dev": "webpack --config webpack.dev.js --watch",
-    "serve-dev": "nodemon server",
+    "serve": "nodemon server",
     "postinstall": "yarn build",
     "start": "node server",
     "test": "webpack test/test.ts --config webpack.dev.js && mocha dist/app.js"

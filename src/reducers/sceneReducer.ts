@@ -1,11 +1,11 @@
 import { CHANGE_SCENE } from '../actions/actiontypes';
 
 const scenes: SceneList = {
-  booting: { background: '#4499ee', messages: [], keyMap: {Enter: 'changeSceneLoading'} },
-  loading: { background: '#22dde3', messages: [], keyMap: {a: 'changeSceneOpening'} },
-  opening: { background: '#66a2e5', messages: [], keyMap: {} },
-  play: { background: '#926986', messages: [], keyMap: {} },
-  gameover: { background: '#1212ae', messages: [], keyMap: {} },
+  booting: { background: '#4499ee', messages: [], keyMap: {Enter: 'changeSceneLoading'}, hasTileMap: false },
+  loading: { background: '#22dde3', messages: [], keyMap: {a: 'changeSceneOpening'}, hasTileMap: false },
+  opening: { background: '#66a2e5', messages: [], keyMap: {x: 'changeLevel2'}, hasTileMap: true,  },
+  play: { background: '#926986', messages: [], keyMap: {}, hasTileMap: true, },
+  gameover: { background: '#1212ae', messages: [], keyMap: {}, hasTileMap: false, },
 }
 scenes.current = scenes.booting;
 

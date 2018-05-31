@@ -1,1 +1,2 @@
 export const CHANGE_SCENE = 'CHANGE_SCENE';
+export const CHANGE_LEVEL = 'CHANGE_LEVEL';

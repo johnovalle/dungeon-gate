@@ -9,15 +9,25 @@ declare global {
   interface SceneList {
     [name: string]: Scene;
   }
+
+  interface KeyMap {
+    [name: string]: string;
+  }
   
   interface Scene {
     background: string;
     messages: Message[];
     keyMap: KeyMap;
+    hasTileMap: boolean;
   }
 
-  interface KeyMap {
-    [name: string]: string;
+  interface LevelList {
+    [name: string]: Level | null;
+  }
+  
+  interface Level {
+    tileMap: number[];
+    objects: any[]; //Player, NPCS, Monsters, Items, Interactive Objects
   }
   
   interface Message {
@@ -25,6 +35,13 @@ declare global {
     color: string;
     x: number;
     y: number;
+  }
+
+  interface TestMap {
+    mapCols: number;
+    mapRows: number;
+    isBG: boolean;
+    grid: number[];
   }
 }
 
