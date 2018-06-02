@@ -14,9 +14,9 @@ export const addObjectLevel = (levelId: string): Action => {
   };
 };
 
-export const moveObject = (objectId: string, direction: string): Action => { 
+export const moveObject = (levelId: string, objectId: string, direction: string): Action => { 
   return {
       type: MOVE_OBJECT,
-      payload: {objectId, direction}
+      payload: {levelId, objectId, direction}
   };
 };

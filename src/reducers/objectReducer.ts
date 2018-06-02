@@ -15,7 +15,30 @@ export default (state=levels, action: Action) => {
     case ADD_OBJECTS: {
       state = {...state, [action.payload.target]: {...state[action.payload.target], ...action.payload.objects} };
       break;
-    }      
+    }
+    case MOVE_OBJECT: { //quick and dirty just to test
+      console.log('MOVE', action.payload, state[action.payload.levelId]);
+      const object = {...state[action.payload.levelId][action.payload.objectId]};
+      if (action.payload.direction === 'up') {
+        object.y_idx -= 1;
+        object.y -= 16;
+      }
+      if (action.payload.direction === 'down') {
+        object.y_idx += 1;
+        object.y += 16;
+      }
+      if (action.payload.direction === 'left') {
+        object.x_idx -= 1;
+        object.x -= 16;
+      }
+      if (action.payload.direction === 'right') {
+        object.x_idx += 1;
+        object.x += 16;
+      }
+      const level = {...state[action.payload.levelId], [action.payload.objectId]: object };
+      state = {...state, [action.payload.levelId]: level};
+      break;
+    }
   }
   return state;
 }

@@ -15,7 +15,7 @@ export default class Renderer {
     
     
     store.subscribe(() => {
-      // console.log('store changed', store.getState());
+      console.log('store changed', store.getState());
       state = store.getState();
       this._currentScene = state.scenes.current;
       this._currentLevel = state.levels.current;
