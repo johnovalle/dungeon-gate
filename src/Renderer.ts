@@ -6,15 +6,24 @@ export default class Renderer {
   private _cols = 27;
   private _rows = 27;
   private _currentLevel: Level | null;
+  private _currentObjects: ObjectList = {};
 
   constructor(private _ctx: CanvasRenderingContext2D, private _canvas: HTMLCanvasElement) {
-    this._currentScene = store.getState().scenes.current;
-    this._currentLevel = store.getState().levels.current;
+    let state: any = store.getState();
+    this._currentScene = state.scenes.current;
+    this._currentLevel = state.levels.current;
+    
+    
     store.subscribe(() => {
       // console.log('store changed', store.getState());
-      this._currentScene = store.getState().scenes.current;
-      this._currentLevel = store.getState().levels.current;
-      console.log('render', this._currentScene);
+      state = store.getState();
+      this._currentScene = state.scenes.current;
+      this._currentLevel = state.levels.current;
+      if (this._currentLevel) {
+        this._currentObjects = state.objects[this._currentLevel.id];
+      }
+      
+      //console.log('render', this._currentScene);
       this.draw();
     });
   }
@@ -24,6 +33,7 @@ export default class Renderer {
       this._drawBackground();
       if (this._currentScene.hasTileMap && this._currentLevel) {
         this._drawMap(this._currentLevel.tileMap);
+        this._drawObjects();
       }
     }
     
@@ -42,28 +52,39 @@ export default class Renderer {
   }
 
   private _drawMap(map: number[]/*, viewport*/): void { //check viewport here and only draw what's in the viewport
-  for(let i = 0, len = map.length;  i < len; i++){
-      let tile = map[i];
-    //if(viewport.indexOf(i) !== -1 && (tile !== 0 || map.isBG)){
-      let x = (i % this._cols) * this._tileSize; // index / width of drawing area in tiles * tile size
-      let y = Math.floor(i / this._cols) * this._tileSize;
-      if (tile === 0) {
-        this._ctx.fillStyle = '#fff0fe';
-      } else if (tile === 1) {
-        this._ctx.fillStyle = '#fff0f1';
-      } else if (tile === 2) {
-        this._ctx.fillStyle = '#f0fffc';
-      } else if (tile === 3) {
-        this._ctx.fillStyle = '#f6fff0';
-      } else if (tile === 4) {
-        this._ctx.fillStyle = '#fffbf0';
-      }
-      this._ctx.fillRect(x, y, this._tileSize, this._tileSize);
-      // let sx = (tile % spritesheet.sheetCols) * spritesheet.tileSize // tile value against width of tilesheet in tiles * tile size on sheet
-      // let sy = Math.floor(tile / spritesheet.sheetCols) * spritesheet.tileSize;
-      // this._ctx.drawImage(spritesheet.sheet, sx, sy, spritesheet.tileSize, spritesheet.tileSize,
-      //                                 x, y, Config.tileSize + 1, Config.tileSize + 1);
-    //}
+    for(let i = 0, len = map.length;  i < len; i++){
+        let tile = map[i];
+      //if(viewport.indexOf(i) !== -1 && (tile !== 0 || map.isBG)){
+        let x = (i % this._cols) * this._tileSize; // index / width of drawing area in tiles * tile size
+        let y = Math.floor(i / this._cols) * this._tileSize;
+        if (tile === 0) {
+          this._ctx.fillStyle = '#fff0fe';
+        } else if (tile === 1) {
+          this._ctx.fillStyle = '#fff0f1';
+        } else if (tile === 2) {
+          this._ctx.fillStyle = '#f0fffc';
+        } else if (tile === 3) {
+          this._ctx.fillStyle = '#f6fff0';
+        } else if (tile === 4) {
+          this._ctx.fillStyle = '#fffbf0';
+        }
+        this._ctx.fillRect(x, y, this._tileSize, this._tileSize);
+        // let sx = (tile % spritesheet.sheetCols) * spritesheet.tileSize // tile value against width of tilesheet in tiles * tile size on sheet
+        // let sy = Math.floor(tile / spritesheet.sheetCols) * spritesheet.tileSize;
+        // this._ctx.drawImage(spritesheet.sheet, sx, sy, spritesheet.tileSize, spritesheet.tileSize,
+        //                                 x, y, Config.tileSize + 1, Config.tileSize + 1);
+      //}
+    }
   }
-}
+
+  private _drawObjects(): void {
+    console.log('draw Objects', this._currentObjects);
+    for (const key in this._currentObjects) {
+      let player = this._currentObjects[key] as Player;
+      console.log('drawing player', player);
+      this._ctx.fillStyle = player.color;
+      this._ctx.fillRect(player.x, player.y, this._tileSize, this._tileSize);
+    }
+    
+  }
 }

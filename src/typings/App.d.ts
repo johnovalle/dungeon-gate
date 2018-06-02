@@ -31,8 +31,12 @@ declare global {
     objects: any[]; //Player, NPCS, Monsters, Items, Interactive Objects
   }
 
+  interface ObjectGroup {
+    [name: string]: ObjectList;
+  }
+
   interface ObjectList {
-    [name: string]: Object[];
+    [name: string]: Object;
   }
   
   interface Message {

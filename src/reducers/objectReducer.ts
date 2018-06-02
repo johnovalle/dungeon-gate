@@ -2,7 +2,7 @@ import { ADD_OBJECTS, ADD_OBJECT_LEVEL, MOVE_OBJECT } from '../actions/actiontyp
 
 import { map0, map1 } from '../maps';
 
-const levels: ObjectList = { // this might end up being an object list reducer, handling objects themselves with one more level
+const levels: ObjectGroup = { // this might end up being an object list reducer, handling objects themselves with one more level
 
 }
 

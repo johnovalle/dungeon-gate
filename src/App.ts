@@ -17,9 +17,9 @@ const keyListener = new KeyListener();
 const renderer = new Renderer(stage.ctx, stage.canvas);
 
 store.dispatch(changeScene('booting'));
-store.subscribe(() => {
-  console.log('store changed', store.getState());
-});
+// store.subscribe(() => {
+//   console.log('store changed', store.getState());
+// });
 
 // setTimeout(()=> {
 //   store.dispatch(changeScene('loading'));

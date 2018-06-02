@@ -32,7 +32,7 @@ export default class KeyListener {
 
     store.subscribe(() => {
       this._currentScene = store.getState().scenes.current;
-      console.log('keylistener', this._currentScene);
+      // console.log('keylistener', this._currentScene);
     });
   }
 
