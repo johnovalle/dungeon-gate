@@ -4,11 +4,10 @@ import { map0, map1 } from '../maps';
 
 const levels: LevelList = {
   current: null,
-  level1: { tileMap: map0.grid, objects: [], },
-  level2: { tileMap: map1.grid, objects: [], },
-  level3: { tileMap: [], objects: [], },
+  level1: { id: 'level1', tileMap: map0.grid, objects: [], },
+  level2: { id: 'level2', tileMap: map1.grid, objects: [], },
+  level3: { id: 'level3', tileMap: [], objects: [], },
 }
-levels.current = levels.booting;
 
 export default (state=levels, action: Action) => {
   switch (action.type) {

@@ -26,8 +26,13 @@ declare global {
   }
   
   interface Level {
+    id: string;
     tileMap: number[];
     objects: any[]; //Player, NPCS, Monsters, Items, Interactive Objects
+  }
+
+  interface ObjectList {
+    [name: string]: Object[];
   }
   
   interface Message {
@@ -42,6 +47,19 @@ declare global {
     mapRows: number;
     isBG: boolean;
     grid: number[];
+  }
+
+  interface Object {
+    x: number;
+    y: number;
+    vel_x: number;
+    vel_y: number;
+    x_idx: number;
+    y_idx: number;
+  }
+
+  interface Player extends Object {
+    color: '#000';
   }
 }
 

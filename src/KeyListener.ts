@@ -1,6 +1,7 @@
 import store from './Store';
 import { changeScene } from './actions/sceneActions';
 import { changeLevel } from './actions/levelActions';
+import { addObjects, addObjectLevel, moveObject} from './actions/objectActions';
 
 type BoundAction = () => Action;
 export default class KeyListener {
@@ -10,6 +11,9 @@ export default class KeyListener {
     changeSceneOpening: [
       changeScene.bind(null, 'opening'),
       changeLevel.bind(null, 'level1'),
+      addObjectLevel.bind(null, 'level1'),
+      
+      addObjects.bind(null, 'level1', {player: {id: 'player', x:0, y:0, x_idx: 0, y_idx: 0, vel_x: 0, vel_y: 0, color:'#000'}}),
     ],
     changeLevel2: [changeLevel.bind(null, 'level2')],
   };

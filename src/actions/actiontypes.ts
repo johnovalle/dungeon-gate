@@ -1,2 +1,7 @@
 export const CHANGE_SCENE = 'CHANGE_SCENE';
 export const CHANGE_LEVEL = 'CHANGE_LEVEL';
+export const ADD_OBJECT_LEVEL = 'ADD_OBJECT_LEVEL'
+export const ADD_OBJECTS = 'ADD_OBJECTS'
+export const MOVE_OBJECT = 'MOVE_OBJECT';
+// export const CHANGE_OBJECT_LEVEL = 'CHANGE_OBJECT_LEVEL';
+// export const UPDATE_OBJECT = 'UPDATE_OBJECT'; //
