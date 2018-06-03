@@ -15,15 +15,12 @@ export default class Renderer {
     
     
     store.subscribe(() => {
-      console.log('store changed', store.getState());
       state = store.getState();
       this._currentScene = state.scenes.current;
       this._currentLevel = state.levels.current;
       if (this._currentLevel) {
         this._currentObjects = state.objects[this._currentLevel.id];
       }
-      
-      //console.log('render', this._currentScene);
       this.draw();
     });
   }
@@ -78,10 +75,8 @@ export default class Renderer {
   }
 
   private _drawObjects(): void {
-    console.log('draw Objects', this._currentObjects);
     for (const key in this._currentObjects) {
-      let player = this._currentObjects[key] as Player;
-      console.log('drawing player', player);
+      let player = this._currentObjects[key];
       this._ctx.fillStyle = player.color;
       this._ctx.fillRect(player.x, player.y, this._tileSize, this._tileSize);
     }

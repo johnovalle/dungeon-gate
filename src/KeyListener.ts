@@ -8,10 +8,8 @@ export default class KeyListener {
   private _currentScene = store.getState().scenes.current;
   private _currentLevel: Level = {} as Level;
   private _actionMap: {[name: string]: any} = {
-    changeScene,
-    changeSceneLoading: [changeScene.bind(null, 'loading')],
-    changeSceneOpening: [
-      changeScene.bind(null, 'opening'),
+    changeScenePlay: [
+      changeScene.bind(null, 'play'),
       changeLevel.bind(null, 'level1'),
       addObjectLevel.bind(null, 'level1'),
       addObjects.bind(null, 'level1', {player: {id: 'player', x:0, y:0, x_idx: 0, y_idx: 0, vel_x: 0, vel_y: 0, color:'#000'}}),

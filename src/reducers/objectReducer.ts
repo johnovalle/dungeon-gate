@@ -13,7 +13,11 @@ export default (state=levels, action: Action) => {
       break;
     }
     case ADD_OBJECTS: {
-      state = {...state, [action.payload.target]: {...state[action.payload.target], ...action.payload.objects} };
+      const objects: {[name: string]: any} = {};
+      action.payload.objects.forEach((object: any) => {
+        objects[object.id] = object;
+      });
+      state = {...state, [action.payload.target]: {...state[action.payload.target], ...objects} };
       break;
     }
     case MOVE_OBJECT: { //quick and dirty just to test

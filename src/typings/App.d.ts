@@ -15,6 +15,7 @@ declare global {
   }
   
   interface Scene {
+    id: string;
     background: string;
     messages: Message[];
     keyMap: KeyMap;
@@ -60,10 +61,11 @@ declare global {
     vel_y: number;
     x_idx: number;
     y_idx: number;
+    color: string;
   }
 
   interface Player extends Object {
-    color: '#000';
+    
   }
 }
 
