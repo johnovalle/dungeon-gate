@@ -31,6 +31,10 @@ export default class Renderer {
       if (this._currentScene.hasTileMap && this._currentLevel) {
         this._drawMap(this._currentLevel.tileMap);
         this._drawObjects();
+      } else {
+        this._currentScene.messages.forEach(message => {
+          this._drawText(message)
+        })
       }
     }
     
@@ -42,9 +46,9 @@ export default class Renderer {
     this._ctx.fillRect(0, 0, this._canvas.width, this._canvas.height);
   }
 
-  private _drawText(text: string, color: string, x: number, y: number): void {
+  private _drawText({text, color, x, y, size}: Message): void {
     this._ctx.fillStyle = color;
-    this._ctx.font = '20px Helvetica';
+    this._ctx.font = `${size}px Helvetica`;
     this._ctx.fillText(text, x, y);
   }
 

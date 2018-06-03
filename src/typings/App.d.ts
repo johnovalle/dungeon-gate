@@ -45,6 +45,7 @@ declare global {
     color: string;
     x: number;
     y: number;
+    size: number;
   }
 
   interface TestMap {
