@@ -3,6 +3,7 @@ import Stage from './Stage';
 import Renderer from './Renderer';
 import store from './Store';
 import KeyListener from './KeyListener';
+import ObjectManager from './ObjectManager';
 
 import { changeScene } from './actions/sceneActions';
 import { changeLevel } from './actions/levelActions';
@@ -38,6 +39,7 @@ store.subscribe(() => {
     // opening operations
     
     setTimeout(()=> { // replace with splash screen and enter / to play / load game
+      ObjectManager.init();
       store.dispatch(changeScene('play'));
       store.dispatch(changeLevel('level1'));
       store.dispatch(addObjectLevel('level1'));

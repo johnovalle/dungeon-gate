@@ -56,6 +56,7 @@ declare global {
   }
 
   interface Object {
+    [name: string]: Object;
     x: number;
     y: number;
     vel_x: number;
